@@ -1,17 +1,15 @@
 module Rack
   class Offline
     class Config
-      attr_reader :cached
-
       def initialize(&block)
-        @cached = []
+        @cache = []
         @network = []
         @fallback = {}
         instance_eval(&block) if block_given?
       end
 
       def cache(*names)
-        @cached.concat(names)
+        @cache.concat(names)
       end
 
       def network(*names)
